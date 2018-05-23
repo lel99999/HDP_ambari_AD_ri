@@ -18,6 +18,20 @@ Vagrant.configure("2") do |config|
     #hdptest.vm.box = "wharton-wcit/centos6py36"
     hdptest.vm.network "private_network", ip: "192.168.60.162"
   end
+  config.vm.define "en01" do |en01|
+    en01.vm.box_url = "https://app.vagrantup.com/bento/boxes/centos-6.7"
+    en01.vm.box = "bento/centos-6.7"
+    en01.vm.hostname = "dn03"
+    en01.vm.box = "wharton-wcit/centos6py36"
+    en01.vm.network "private_network", ip: "192.168.60.167"
+    en01.vm.provision "shell", :inline => "sudo echo '192.168.60.159 ambari ambari.local' >> /etc/hosts"
+    en01.vm.provision "shell", :inline => "sudo echo '192.168.60.160 nn01 nn01.local' >> /etc/hosts"
+    en01.vm.provision "shell", :inline => "sudo echo '192.168.60.161 snn01 snn01.local' >> /etc/hosts"
+    en01.vm.provision "shell", :inline => "sudo echo '192.168.60.165 dn01 dn01.local' >> /etc/hosts"
+    en01.vm.provision "shell", :inline => "sudo echo '192.168.60.166 dn02 dn02.local' >> /etc/hosts"
+    en01.vm.provision "shell", :inline => "sudo echo '192.168.60.167 dn03 dn03.local' >> /etc/hosts"
+    en01.vm.provision "shell", :inline => "sudo echo '192.168.60.168 en01 en01.local' >> /etc/hosts"
+  end
 # config.vm.define "hdprepo" do |hdprepo|
 #   hdprepo.vm.box = "bento/centos-6.7"
 #   hdprepo.vm.hostname = "hdprepo"
@@ -42,6 +56,7 @@ Vagrant.configure("2") do |config|
     ambari.vm.provision "shell", :inline => "sudo echo '192.168.60.165 dn01 dn01.local' >> /etc/hosts"
     ambari.vm.provision "shell", :inline => "sudo echo '192.168.60.166 dn02 dn02.local' >> /etc/hosts"
     ambari.vm.provision "shell", :inline => "sudo echo '192.168.60.167 dn03 dn03.local' >> /etc/hosts"
+    ambari.vm.provision "shell", :inline => "sudo echo '192.168.60.168 en01 en01.local' >> /etc/hosts"
 
     ambari.vm.provision "ansible" do |ansible|
       ansible.playbook = "deploy_ambari.yml"
@@ -73,6 +88,7 @@ Vagrant.configure("2") do |config|
     nn01.vm.provision "shell", :inline => "sudo echo '192.168.60.165 dn01 dn01.local' >> /etc/hosts"
     nn01.vm.provision "shell", :inline => "sudo echo '192.168.60.166 dn02 dn02.local' >> /etc/hosts"
     nn01.vm.provision "shell", :inline => "sudo echo '192.168.60.167 dn03 dn03.local' >> /etc/hosts"
+    nn01.vm.provision "shell", :inline => "sudo echo '192.168.60.168 en01 en01.local' >> /etc/hosts"
   end
   config.vm.define "snn01" do |snn01|
   #config.vm.define "mstr01" do |mstr01|
@@ -90,6 +106,7 @@ Vagrant.configure("2") do |config|
     snn01.vm.provision "shell", :inline => "sudo echo '192.168.60.165 dn01 dn01.local' >> /etc/hosts"
     snn01.vm.provision "shell", :inline => "sudo echo '192.168.60.166 dn02 dn02.local' >> /etc/hosts"
     snn01.vm.provision "shell", :inline => "sudo echo '192.168.60.167 dn03 dn03.local' >> /etc/hosts"
+    snn01.vm.provision "shell", :inline => "sudo echo '192.168.60.168 en01 en01.local' >> /etc/hosts"
   end
   config.vm.define "dn01" do |dn01|
     #dn01.customize ["modifyvm", :id, "--memory", 2048]
@@ -106,6 +123,7 @@ Vagrant.configure("2") do |config|
     dn01.vm.provision "shell", :inline => "sudo echo '192.168.60.165 dn01 dn01.local' >> /etc/hosts"
     dn01.vm.provision "shell", :inline => "sudo echo '192.168.60.166 dn02 dn02.local' >> /etc/hosts"
     dn01.vm.provision "shell", :inline => "sudo echo '192.168.60.167 dn03 dn03.local' >> /etc/hosts"
+    dn01.vm.provision "shell", :inline => "sudo echo '192.168.60.168 en01 en01.local' >> /etc/hosts"
   end
   config.vm.define "dn02" do |dn02|
     #dn02.customize ["modifyvm", :id, "--memory", 2048]
@@ -120,6 +138,7 @@ Vagrant.configure("2") do |config|
     dn02.vm.provision "shell", :inline => "sudo echo '192.168.60.165 dn01 dn01.local' >> /etc/hosts"
     dn02.vm.provision "shell", :inline => "sudo echo '192.168.60.166 dn02 dn02.local' >> /etc/hosts"
     dn02.vm.provision "shell", :inline => "sudo echo '192.168.60.167 dn03 dn03.local' >> /etc/hosts"
+    dn02.vm.provision "shell", :inline => "sudo echo '192.168.60.168 en01 en01.local' >> /etc/hosts"
   end
   config.vm.define "dn03" do |dn03|
     dn03.vm.box_url = "https://app.vagrantup.com/bento/boxes/centos-6.7"
@@ -133,6 +152,7 @@ Vagrant.configure("2") do |config|
     dn03.vm.provision "shell", :inline => "sudo echo '192.168.60.165 dn01 dn01.local' >> /etc/hosts"
     dn03.vm.provision "shell", :inline => "sudo echo '192.168.60.166 dn02 dn02.local' >> /etc/hosts"
     dn03.vm.provision "shell", :inline => "sudo echo '192.168.60.167 dn03 dn03.local' >> /etc/hosts"
+    dn03.vm.provision "shell", :inline => "sudo echo '192.168.60.168 en01 en01.local' >> /etc/hosts"
   end
   #config.vm.provision "ansible" do |ansible|
   #  ansible.playbook = "hdp_singlesetup.yml"
