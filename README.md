@@ -8,6 +8,8 @@
 ![](https://github.com/lel99999/HDP_ambari_AD_ri/blob/master/images/ambari_AD1.png)
 
 #### Ambari LDAP and AD Integration
-- LDAP/AD Authentication
+- LDAP/AD Authentication <br/>
   [https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.6.5/bk_security/content/_configuring_ambari_for_ldap_or_active_directory_authentication.html](https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.6.5/bk_security/content/_configuring_ambari_for_ldap_or_active_directory_authentication.html) <br/>
   
+- Synchronize LDAP Users and Groups <br/>
+  [https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.6.5/bk_security/content/_synchronizing_ldap_users_and_groups.html](https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.6.5/bk_security/content/_synchronizing_ldap_users_and_groups.html) <br/>
